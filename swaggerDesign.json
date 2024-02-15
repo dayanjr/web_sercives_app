@@ -12,7 +12,7 @@
         "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
       }
     },
-    "host": "https://web-service-app-hc82.onrender.com",
+    "host": "web-service-app-hc82.onrender.com",
     "basePath": "/",
     "tags": [
       {
