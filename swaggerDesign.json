@@ -12,7 +12,7 @@
         "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
       }
     },
-    "host": "birch-portfolio-builder.herokuapp.com",
+    "host": "https://web-service-app-hc82.onrender.com",
     "basePath": "/",
     "tags": [
       {
