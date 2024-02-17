@@ -16,6 +16,8 @@
         "body-parser": "^1.18.3",
         "dotenv": "^16.0.0",
         "express": "^4.16.3",
+        "joi": "^17.12.1",
+        "joi-password-complexity": "^5.2.0",
         "mongodb": "^4.4.0",
         "mongoose": "^6.2.4",
         "swagger": "^0.7.5",
