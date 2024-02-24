@@ -112,7 +112,7 @@
       },
       "/user/login": {
         "get": {
-          "tags": ["Not Yet Implemented"],
+          "tags": ["Additional functions"],
           "summary": "Logs user into the system",
           "operationId": "loginUser",
           "produces": ["application/json"],
@@ -159,7 +159,7 @@
       },
       "/user/logout": {
         "get": {
-          "tags": ["Not Yet Implemented"],
+          "tags": ["Additional functions"],
           "summary": "Logs out current logged in user session",
           "operationId": "logoutUser",
           "produces": ["application/json"],
@@ -202,7 +202,7 @@
           }
         },
         "put": {
-          "tags": ["Not Yet Implemented"],
+          "tags": ["Additional functions"],
           "summary": "Updated user",
           "description": "This can only be done by the logged in user.",
           "operationId": "updateUser",
@@ -238,7 +238,7 @@
           }
         },
         "delete": {
-          "tags": ["Not Yet Implemented"],
+          "tags": ["Additional functions"],
           "summary": "Delete user",
           "description": "This can only be done by the logged in user.",
           "operationId": "deleteUser",
