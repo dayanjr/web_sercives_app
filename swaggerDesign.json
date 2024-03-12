@@ -31,6 +31,43 @@
     "schemes": ["https"],
     "paths": {
       "/theme/{themeName}": {
+        "delete": {
+          "tags": ["theme"],
+          "summary": "Delete Themes by name",
+          "description": "Each theme has a unique name, this will basically find a single theme by an exact name almost like an id",
+          "operationId": "deleteThemeByName",
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "name": "themeName",
+              "in": "path",
+              "description": "Theme name string is required and functions as id",
+              "required": true,
+              "type": "string",
+              "items": {
+                "type": "string",
+                "default": "available"
+              },
+              "collectionFormat": "csv"
+            }
+          ],
+          "security": [
+            {
+              "petstore_auth": ["write:pets", "read:pets"]
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "object"
+              }
+            },
+            "400": {
+              "description": "Invalid theme name value"
+            }
+          }
+        },
         "get": {
           "tags": ["theme"],
           "summary": "Finds Themes by name",
