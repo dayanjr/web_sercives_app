@@ -33,6 +33,10 @@ module.exports.create = (req, res) => {
 
 module.exports.getAll = (req, res) => {
  try{
+  if (!req.body.username) {
+    res.status(400).send({ message: 'Content can not be empty!' });
+    return;
+  }
   User.find({})
   .then((data) => {
     res.status(200).send(data);
