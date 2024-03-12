@@ -33,10 +33,6 @@ module.exports.create = (req, res) => {
 
 module.exports.getAll = (req, res) => {
  try{
-  if (!req.body.username) {
-    res.status(400).send({ message: 'Content can not be empty!' });
-    return;
-  }
   User.find({})
   .then((data) => {
     res.status(200).send(data);
@@ -54,6 +50,10 @@ module.exports.getAll = (req, res) => {
 module.exports.getUser = (req, res) => {
   try{
     const username = req.params.username;
+    if (!req.body.username) {
+      res.status(400).send({ message: 'Content can not be empty!' });
+      return;
+    }
     User.find({ username: username })
       .then((data) => {
         res.status(200).send(data);
@@ -102,6 +102,10 @@ module.exports.updateUser = async (req, res) => {
 module.exports.deleteUser = async (req, res) => {
   try {
     const username = req.params.username;
+    if (!req.body.username) {
+      res.status(400).send({ message: 'Content can not be empty!' });
+      return;
+    }
     if (!username) {
       res.status(400).send({ message: 'Invalid Username Supplied' });
       return;
