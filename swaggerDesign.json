@@ -74,7 +74,7 @@
           "tags": ["theme"],
           "summary": "Delete Themes by name",
           "description": "Each theme has a unique name, this will basically find a single theme by an exact name almost like an id",
-          "operationId": "findThemeByName",
+          "operationId": "deleteThemeByName",
           "produces": ["application/json"],
           "parameters": [
             {
