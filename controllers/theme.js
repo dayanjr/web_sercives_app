@@ -3,7 +3,7 @@ const Theme = db.theme;
 
 exports.getTheme = (req, res) => {
   const themeName = req.params.themeName;
-  if (!req.body.themeName) {
+  if (!req.params.themeName) {
     res.status(400).send({ message: 'Content can nottt be empty!' });
     return;
   }
