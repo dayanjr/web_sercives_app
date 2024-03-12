@@ -19,7 +19,7 @@ exports.getTheme = (req, res) => {
       });
     });
 };
-exports.deleteUser = async (req, res) => {
+exports.deleteTheme = async (req, res) => {
   try {
     const themeName = req.params.themeName;
   if (!req.params.themeName) {
