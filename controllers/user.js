@@ -50,7 +50,7 @@ module.exports.getAll = (req, res) => {
 module.exports.getUser = (req, res) => {
   try{
     const username = req.params.username;
-    if (!req.body.username) {
+    if (!req.params.username) {
       res.status(400).send({ message: 'Content can not be empty!' });
       return;
     }
@@ -70,7 +70,7 @@ module.exports.getUser = (req, res) => {
 module.exports.updateUser = async (req, res) => {
   try {
     const username = req.params.username;
-    if (!req.body.username) {
+    if (!req.params.username) {
       res.status(400).send({ message: 'Content can not be empty!' });
       return;
     }
@@ -106,7 +106,7 @@ module.exports.updateUser = async (req, res) => {
 module.exports.deleteUser = async (req, res) => {
   try {
     const username = req.params.username;
-    if (!req.body.username) {
+    if (!req.params.username) {
       res.status(400).send({ message: 'Content can not be empty!' });
       return;
     }

@@ -22,7 +22,7 @@ exports.getTheme = (req, res) => {
 exports.deleteUser = async (req, res) => {
   try {
     const themeName = req.params.themeName;
-  if (!req.body.themeName) {
+  if (!req.params.themeName) {
     res.status(400).send({ message: 'Content can nottt be empty!' });
     return;
   }
