@@ -70,6 +70,10 @@ module.exports.getUser = (req, res) => {
 module.exports.updateUser = async (req, res) => {
   try {
     const username = req.params.username;
+    if (!req.body.username) {
+      res.status(400).send({ message: 'Content can not be empty!' });
+      return;
+    }
     if (!username) {
       res.status(400).send({ message: 'Invalid Username Supplied' });
       return;
