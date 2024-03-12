@@ -1,12 +1,17 @@
 const db = require('../models');
 const Theme = db.theme;
-
+const usernameUtil = require('../util/usernameComplexity');
 exports.getTheme = (req, res) => {
   const themeName = req.params.themeName;
   if (!req.params.themeName) {
-    res.status(400).send({ message: 'Content can nottt be empty!' });
+    res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
+  const usernameCheck = usernameUtil.usernamePass(themeName);
+    if (usernameCheck.error) {
+      res.status(400).send({ message: usernameCheck.error });
+      return;
+    }
   Theme.find({ themeName: themeName })
     .then((data) => {
       if (!data) res.status(404).send({ message: 'Not found theme with name: ' + themeName });
@@ -26,6 +31,11 @@ exports.deleteTheme = async (req, res) => {
     res.status(400).send({ message: 'Content can nottt be empty!' });
     return;
   }
+  const usernameCheck = usernameUtil.usernamePass(themeName);
+    if (usernameCheck.error) {
+      res.status(400).send({ message: usernameCheck.error });
+      return;
+    }
     if (!themeName) {
       res.status(400).send({ message: 'Invalid Theme Name Supplied' });
       return;
