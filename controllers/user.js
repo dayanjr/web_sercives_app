@@ -1,6 +1,7 @@
 const db = require('../models');
 const User = db.user;
 const passwordUtil = require('../util/passwordComplexityCheck');
+const usernameUtil = require('../util/usernameComplexity');
 
 module.exports.create = (req, res) => {
   try{// Validate request
@@ -9,9 +10,16 @@ module.exports.create = (req, res) => {
     return;
   }
   const password = req.body.password;
-    const passwordCheck = passwordUtil.passwordPass(password);
+  const userName = req.body.password;
+  const passwordCheck = passwordUtil.passwordPass(password);
+  const usernameCheck = usernameUtil.usernamePass(userName);
+
     if (passwordCheck.error) {
       res.status(400).send({ message: passwordCheck.error });
+      return;
+    }
+    if (usernameCheck.error) {
+      res.status(400).send({ message: usernameCheck.error });
       return;
     }
   const user = new User(req.body);
@@ -50,6 +58,11 @@ module.exports.getAll = (req, res) => {
 module.exports.getUser = (req, res) => {
   try{
     const username = req.params.username;
+    const usernameCheck = usernameUtil.usernamePass(username);
+    if (usernameCheck.error) {
+      res.status(400).send({ message: usernameCheck.error });
+      return;
+    }
     if (!req.params.username) {
       res.status(400).send({ message: 'Content can not be empty!' });
       return;
@@ -70,6 +83,11 @@ module.exports.getUser = (req, res) => {
 module.exports.updateUser = async (req, res) => {
   try {
     const username = req.params.username;
+    const usernameCheck = usernameUtil.usernamePass(username);
+    if (usernameCheck.error) {
+      res.status(400).send({ message: usernameCheck.error });
+      return;
+    }
     if (!req.params.username) {
       res.status(400).send({ message: 'Content can not be empty!' });
       return;
@@ -106,6 +124,11 @@ module.exports.updateUser = async (req, res) => {
 module.exports.deleteUser = async (req, res) => {
   try {
     const username = req.params.username;
+    const usernameCheck = usernameUtil.usernamePass(username);
+    if (usernameCheck.error) {
+      res.status(400).send({ message: usernameCheck.error });
+      return;
+    }
     if (!req.params.username) {
       res.status(400).send({ message: 'Content can not be empty!' });
       return;
