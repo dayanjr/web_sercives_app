@@ -9,10 +9,10 @@ module.exports.create = (req, res) => {
     res.status(400).send({ message: 'Content can not be empty!' });
     return;
   }
-  const password = req.params.password;
-  const userName = req.params.username;
-  const passwordCheck = passwordUtil.passwordPass(password);
-  const usernameCheck = usernameUtil.usernamePass(userName);
+  //const password = req.params.password;
+  //const userName = req.params.username;
+  const passwordCheck = passwordUtil.passwordPass(req.body.password);
+  const usernameCheck = usernameUtil.usernamePass(req.body.username);
     if (passwordCheck.error) {
       res.status(400).send({ message: passwordCheck.error });
       return;
