@@ -19,3 +19,25 @@ exports.getTheme = (req, res) => {
       });
     });
 };
+exports.deleteUser = async (req, res) => {
+  try {
+    const themeName = req.params.themeName;
+  if (!req.body.themeName) {
+    res.status(400).send({ message: 'Content can nottt be empty!' });
+    return;
+  }
+    if (!themeName) {
+      res.status(400).send({ message: 'Invalid Theme Name Supplied' });
+      return;
+    }
+    Theme.deleteOne({ themeName: themeName }, function (err, result) {
+      if (err) {
+        res.status(500).json(err || 'Some error occurred while deleting the contact.');
+      } else {
+        res.status(204).send(result);
+      }
+    });
+  } catch (err) {
+    res.status(500).json(err || 'Some error occurred while deleting the contact.');
+  }
+}; 
